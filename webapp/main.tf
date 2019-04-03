@@ -1,5 +1,5 @@
 variable "rgid" {
-  default = "99999"
+  default = "99998"
   description = "Resource Group ID"
 }
 
@@ -36,7 +36,7 @@ provider "azurerm" {
 }
 
 module "rg" {
-  source = "../../resource-group"
+  source = "git::ssh://git@github.com/clearesult/cr-azurerm_resource_group.git"
   rgid = "${var.rgid}"
   environment = "${var.environment}"
   create_date = "${var.create_date}"
@@ -49,13 +49,13 @@ module "appservice" {
   environment = "${var.environment}"
   location = "${var.location}"
   count = "1"
-  source = "../../appservice"
+  source = "git::ssh://git@github.com/clearesult/cr-azurerm_app_service.git"
   plan = "${var.plan}"
 }
 
 module "appinsights" {
   count = "1"
-  source = "../../appinsights"
+  source = "git::ssh://git@github.com/clearesult/cr-azurerm_application_insights.git"
   rg_name = "${basename(module.rg.id)}" # creates inter-module dependency workaround
   rgid = "${var.rgid}"
   environment = "${var.environment}"

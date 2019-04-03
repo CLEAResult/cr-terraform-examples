@@ -15,7 +15,13 @@ Creates:
 * An Azure tenant and subscription ID
 * Already authenticated to azure - See https://www.terraform.io/docs/providers/azurerm/index.html#authenticating-to-azure for more info
 
-Usage:
+# **CAUTION**
+
+Always run `terraform plan` before `terraform apply`!
+
+Make sure you know where this will be created before creating.
+
+# Usage
 
 ```
 terraform init

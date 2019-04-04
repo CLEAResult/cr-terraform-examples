@@ -36,7 +36,7 @@ provider "azurerm" {
 }
 
 module "rg" {
-  source = "git::ssh://git@github.com/clearesult/cr-azurerm_resource_group.git"
+  source = "git::ssh://git@github.com/clearesult/cr-azurerm_resource_group.git?ref=v1.0"
   rgid = "${var.rgid}"
   environment = "${var.environment}"
   create_date = "${var.create_date}"
@@ -49,13 +49,13 @@ module "appservice" {
   environment = "${var.environment}"
   location = "${var.location}"
   count = "1"
-  source = "git::ssh://git@github.com/clearesult/cr-azurerm_app_service.git"
+  source = "git::ssh://git@github.com/clearesult/cr-azurerm_app_service.git?ref=v1.0.1"
   plan = "${var.plan}"
 }
 
 module "appinsights" {
   count = "1"
-  source = "git::ssh://git@github.com/clearesult/cr-azurerm_application_insights.git"
+  source = "git::ssh://git@github.com/clearesult/cr-azurerm_application_insights.git?ref=v1.0"
   rg_name = "${basename(module.rg.id)}" # creates inter-module dependency workaround
   rgid = "${var.rgid}"
   environment = "${var.environment}"

@@ -49,7 +49,7 @@ module "appservice" {
   environment = "${var.environment}"
   location = "${var.location}"
   count = "1"
-  source = "git::ssh://git@github.com/clearesult/cr-azurerm_app_service.git?ref=v1.0.1"
+  source = "git::ssh://git@github.com/clearesult/cr-azurerm_app_service.git?ref=v1.1.0"
   plan = "${var.plan}"
 }
 
